@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, Section } from "../../components";
+import { Hero, Button, Section } from "../../components";
 import * as S from "./Home.style";
+import Chef from "../../assets/logo.svg";
 
 function Home() {
   return (
     <S.Main>
+      <Hero title="Anyone can COOK!" url={Chef} />
       <Section background="e3e3e3">
         Welcome to my React boilterplate. I hope that this will bring you up to
         speed with your development.

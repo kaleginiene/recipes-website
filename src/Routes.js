@@ -6,9 +6,19 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
 
 function Routes() {
+  const current = window.location.pathname;
+
   return (
     <Router>
-      <Header />
+      <Header
+        color={() => {
+          if (current === "/") {
+            return "#fff";
+          } else {
+            return "#222";
+          }
+        }}
+      />
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route exact path="/" component={Home} />

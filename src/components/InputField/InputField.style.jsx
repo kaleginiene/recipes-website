@@ -13,6 +13,7 @@ export const Input = styled.input`
   padding: 0.5em;
   height: ${(props) => props.theme.primary.height};
   margin: 1em 0;
+  border-radius: 5px;
   &:focus {
     outline: none;
   }

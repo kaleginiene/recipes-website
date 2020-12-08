@@ -2,17 +2,29 @@ import React from "react";
 import * as S from "./Header.style";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/logo.png";
+import { Button } from "../../components";
 
-function Header() {
+function Header({ color }) {
+  const current = window.location.pathname;
+
   return (
     <S.Header>
       <S.Wrapper>
         <Link to="/">
-          <S.Logo src={logoImg} alt="Logo" />
+          {current !== "/" && <S.Logo src={logoImg} alt="Logo" />}
         </Link>
         <S.Actions>
-          <S.StyledLink to="/">Home</S.StyledLink>
-          <S.StyledLink to="/about">About</S.StyledLink>
+          <S.StyledLink to="/" color={color}>
+            Home
+          </S.StyledLink>
+          <S.StyledLink to="/about" color={color}>
+            My recipes
+          </S.StyledLink>
+          <S.StyledLink to="/about" color={color}>
+            Add Recipe
+          </S.StyledLink>
+          <Button>Register</Button>
+          <Button>Login</Button>
         </S.Actions>
       </S.Wrapper>
     </S.Header>
