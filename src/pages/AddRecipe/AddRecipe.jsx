@@ -1,8 +1,8 @@
 import React from "react";
 import { Section } from "../../components";
-import * as S from "./About.style";
+import * as S from "./AddRecipe.style";
 
-function About() {
+function AddRecipe() {
   return (
     <S.Main>
       <Section fullWidth>About page</Section>;
@@ -10,4 +10,4 @@ function About() {
   );
 }
 
-export default About;
+export default AddRecipe;
