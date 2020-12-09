@@ -1,6 +1,6 @@
 const theme = {
   primary: {
-    background: "#5F9071",
+    background: "#154734",
     fonts: "#fff",
     hover: {
       background: "#222222",
@@ -8,11 +8,17 @@ const theme = {
     focus: {
       background: "#111111",
     },
+    button: {
+      background: "transparent",
+      border: "1px solid #fff",
+    },
   },
   secondary: {
     background: "#eeeeee",
+    fonts: "#1b261f",
     hover: {
-      background: "e8e8e8",
+      background: "#154734",
+      fonts: "#fff",
     },
     focus: {
       background: "e3e3e3",
