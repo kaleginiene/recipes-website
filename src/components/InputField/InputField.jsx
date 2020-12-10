@@ -14,6 +14,11 @@ function InputField({
   required,
   width,
   minNumber,
+  maxNumber,
+  step,
+  minTime,
+  maxTime,
+  disabled,
 }) {
   switch (type) {
     case "number":
@@ -22,9 +27,23 @@ function InputField({
           <S.Label>{label}</S.Label>
           <S.Input
             type="number"
-            step="1"
+            step={step}
             min={minNumber}
+            max={maxNumber}
             placeholder={placeholder}
+            onChange={handleChange}
+            required={required}
+          />
+        </S.InputWrapper>
+      );
+    case "time":
+      return (
+        <S.InputWrapper>
+          <S.Label>{label}</S.Label>
+          <S.Input
+            type="time"
+            min={minTime}
+            max={maxTime}
             onChange={handleChange}
             required={required}
           />
@@ -116,6 +135,7 @@ function InputField({
             required={required}
             width={width}
             maxLength={maxLength}
+            disabled={disabled}
           />
         </S.InputWrapper>
       );

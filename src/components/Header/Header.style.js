@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   align-items: center;
   margin: 0 auto;
   padding-bottom: 1em;
+  background: transparent;
   border-bottom: 2px solid ${(props) => props.theme.secondary.background};
 `;
 
@@ -24,7 +25,8 @@ export const Logo = styled.img`
 export const Actions = styled.nav`
   Button {
     background: transparent;
-    border: 1px solid ${(props) => props.color};
+    border: 1px solid ${(props) => props.theme.primary.fonts};
+    color: ${(props) => props.theme.primary.fonts};
   }
   Button:not(:last-child) {
     margin-right: 1em;
