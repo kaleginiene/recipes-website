@@ -9,41 +9,47 @@ export const InputWrapper = styled.div`
 export const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid ${(props) => props.theme.primary.background};
+  border: 2px solid #b3c5d6;
+  border-radius: 5px;
   padding: 0.5em;
   height: ${(props) => props.theme.primary.height};
-  margin: 1em 0;
-  border-radius: 5px;
+  margin: 0.2em 0 1em;
+  font-size: 1.2em;
   &:focus {
     outline: none;
-  }
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    margin: 0;
   }
 `;
 
 export const TextArea = styled.textarea`
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid ${(props) => props.theme.primary.background};
+  border: none;
   padding: 0.5em;
   margin: 1em 0;
+  border: 2px solid #b3c5d6;
+  border-radius: 5px;
+  font-size: 1.2em;
   &&:focus {
     outline: none;
-  }
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    margin: 0;
   }
 `;
 
 export const Select = styled.select`
-  width: 100%;
+  width: ${(props) => {
+    if (props.width) {
+      return props.width;
+    } else {
+      return "100%";
+    }
+  }};
   box-sizing: border-box;
+  border: 2px solid #b3c5d6;
   border-radius: 5px;
-  border: 1px solid ${(props) => props.theme.primary.background};
-  padding: 5px;
+  padding: 0.685em;
+  margin: 0.2em 0 1em;
+  @media only screen and (max-width: 691px) {
+    max-width: 100%;
+  }
 `;
 export const Radio = styled.input`
   width: 15px;
@@ -57,13 +63,8 @@ export const RadioLabel = styled.label`
 `;
 
 export const Label = styled.label`
-  color: ${(props) => props.theme.primary.color};
-  font-size: 0.8em;
-  text-align: right;
-  margin-top: 2em;
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    text-align: left;
-    margin-top: 2em;
-  }
+  width: 100%;
+  font-size: 1.2em;
+  text-align: left;
+  font-weight: bold;
 `;

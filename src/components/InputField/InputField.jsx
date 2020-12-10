@@ -10,7 +10,10 @@ function InputField({
   label,
   radioName,
   minLength,
+  maxLength,
   required,
+  width,
+  minNumber,
 }) {
   switch (type) {
     case "number":
@@ -19,7 +22,8 @@ function InputField({
           <S.Label>{label}</S.Label>
           <S.Input
             type="number"
-            step="0.1"
+            step="1"
+            min={minNumber}
             placeholder={placeholder}
             onChange={handleChange}
             required={required}
@@ -32,6 +36,19 @@ function InputField({
           <S.Label>{label}</S.Label>
           <S.Input
             type="email"
+            placeholder={placeholder}
+            onChange={handleChange}
+            required={required}
+            minLength={minLength}
+          />
+        </S.InputWrapper>
+      );
+    case "password":
+      return (
+        <S.InputWrapper>
+          <S.Label>{label}</S.Label>
+          <S.Input
+            type="password"
             placeholder={placeholder}
             onChange={handleChange}
             required={required}
@@ -55,7 +72,12 @@ function InputField({
       return (
         <S.InputWrapper>
           <S.Label>{label}</S.Label>
-          <S.Select type="dropdown" onChange={handleChange} defaultValue>
+          <S.Select
+            type="dropdown"
+            onChange={handleChange}
+            defaultValue
+            width={width}
+          >
             <option disabled value>
               {options[0].name}
             </option>
@@ -92,6 +114,8 @@ function InputField({
             onChange={handleChange}
             minLength={minLength}
             required={required}
+            width={width}
+            maxLength={maxLength}
           />
         </S.InputWrapper>
       );

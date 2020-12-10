@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as S from "./Header.style";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import logoImg from "../../assets/logo.png";
 import { Button } from "../../components";
 
 function Header() {
   const currentLocation = useLocation();
   const history = useHistory();
+  const auth = useContext(AuthContext);
 
   return (
     <S.Header>
@@ -53,30 +55,50 @@ function Header() {
           >
             Add Recipe
           </S.StyledLink>
-          <Button
-            color={() => {
-              if (currentLocation.pathname === "/") {
-                return "#fff";
-              } else {
-                return "#154734";
+          {!auth.token && (
+            <>
+              <Button
+                color={() => {
+                  if (currentLocation.pathname === "/") {
+                    return "#fff";
+                  } else {
+                    return "#154734";
+                  }
+                }}
+                handleClick={() => history.push("/register")}
+              >
+                Register
+              </Button>
+              <Button
+                color={() => {
+                  if (currentLocation.pathname === "/") {
+                    return "#fff";
+                  } else {
+                    return "#154734";
+                  }
+                }}
+                handleClick={() => history.push("/login")}
+              >
+                Login
+              </Button>
+            </>
+          )}
+          {auth.token && (
+            <Button
+              color={() => {
+                if (currentLocation.pathname === "/") {
+                  return "#fff";
+                } else {
+                  return "#154734";
+                }
+              }}
+              handleClick={() =>
+                auth.updateToken(localStorage.removeItem("token"))
               }
-            }}
-            handleClick={() => history.push("/register")}
-          >
-            Register
-          </Button>
-          <Button
-            color={() => {
-              if (currentLocation.pathname === "/") {
-                return "#fff";
-              } else {
-                return "#154734";
-              }
-            }}
-            handleClick={() => history.push("/login")}
-          >
-            Login
-          </Button>
+            >
+              Logout
+            </Button>
+          )}
         </S.Actions>
       </S.Wrapper>
     </S.Header>

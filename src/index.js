@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "./Routes";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { AuthProvider } from "./context/AuthContext";
 import theme from "./theme";
 import "normalize.css";
 
@@ -16,8 +17,10 @@ const GlobalBodyStyle = createGlobalStyle`
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <GlobalBodyStyle />
-      <Routes />
+      <AuthProvider>
+        <GlobalBodyStyle />
+        <Routes />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
