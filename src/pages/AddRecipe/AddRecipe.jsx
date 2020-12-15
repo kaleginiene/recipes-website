@@ -1,20 +1,72 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { Section, Inputfield } from "../../components";
 import { Button } from "../../components/Button/Button.style";
 import * as S from "./AddRecipe.style";
 
+function insertRecipe(auth, recipe, history, setNotification) {
+  fetch("http://localhost:8080/recipes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
+    },
+    body: JSON.stringify({ recipe }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.msg === "You successfully added a recipe.") {
+        history.push("/");
+      } else {
+        return setNotification(data.msg || "Error");
+      }
+    })
+    .catch((err) => setNotification(err.message));
+}
+
 function AddRecipe() {
+  const [recipe, setRecipe] = useState({
+    title: "",
+    image: "",
+    description: "",
+    duration: "",
+    type: "",
+    difficulty: "",
+    ingredients: "",
+  });
+  const [duration, setDuration] = useState({
+    hours: null,
+    mins: null,
+  });
+  const durationFull = duration.hours + ":" + duration.mins;
+  const auth = useContext(AuthContext);
+  const history = useHistory();
+  const [notification, setNotification] = useState();
+
+  console.log(recipe);
+
   return (
     <S.Main>
       <Section width="56">
-        <S.Form>
+        <S.Form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setRecipe({ ...recipe, duration: durationFull });
+            insertRecipe(auth, recipe, history, setNotification);
+          }}
+        >
           <S.Title>Add a recipe</S.Title>
+          <h3>{notification}</h3>
 
           <Inputfield
             type="text"
             placeholder="E.g.: Apple pie"
             label="Title"
             required
+            handleChange={(e) =>
+              setRecipe({ ...recipe, title: e.target.value })
+            }
           />
           <S.FlexBlock>
             <S.FlexBlock className="mobile-flex">
@@ -26,6 +78,17 @@ function AddRecipe() {
                   minNumber="0"
                   maxNumber="24"
                   placeholder="H"
+                  handleChange={(e) => {
+                    if (e.target.value < 10) {
+                      const hours = 0 + e.target.value;
+                      setDuration({
+                        ...duration,
+                        hours: hours,
+                      });
+                    } else {
+                      setDuration({ ...duration, hours: e.target.value });
+                    }
+                  }}
                 />
               </S.Duration>
               <S.Span>:</S.Span>
@@ -37,6 +100,17 @@ function AddRecipe() {
                   maxNumber="59"
                   placeholder="min"
                   required
+                  handleChange={(e) => {
+                    if (e.target.value < 10) {
+                      const mins = 0 + e.target.value;
+                      setDuration({
+                        ...duration,
+                        mins: mins,
+                      });
+                    } else {
+                      setDuration({ ...duration, mins: e.target.value });
+                    }
+                  }}
                 />
               </S.Duration>
             </S.FlexBlock>
@@ -53,6 +127,9 @@ function AddRecipe() {
                 { id: 6, name: "apetizer", value: "apetizer" },
                 { id: 7, name: "soup", value: "soup" },
               ]}
+              handleChange={(e) =>
+                setRecipe({ ...recipe, type: e.target.value })
+              }
             />
             <S.Label>Difficulty</S.Label>
             <Inputfield
@@ -63,6 +140,9 @@ function AddRecipe() {
                 { id: 2, name: "need some effort", value: "need some effort" },
                 { id: 3, name: "expert", value: "expert" },
               ]}
+              handleChange={(e) =>
+                setRecipe({ ...recipe, difficulty: e.target.value })
+              }
             />
           </S.FlexBlock>
           <Inputfield
@@ -70,16 +150,25 @@ function AddRecipe() {
             placeholder="E.g.: https://www.url.com"
             label="Image"
             required
+            handleChange={(e) =>
+              setRecipe({ ...recipe, image: e.target.value })
+            }
           />
           <Inputfield
             type="longtext"
             placeholder="Type ingredients list here..."
             label="Ingredients"
+            handleChange={(e) =>
+              setRecipe({ ...recipe, ingredients: e.target.value })
+            }
           />
           <Inputfield
             type="longtext"
             placeholder="Type your recipe description here..."
             label="Description"
+            handleChange={(e) =>
+              setRecipe({ ...recipe, description: e.target.value })
+            }
           />
 
           <Button type="submit">Add recipe</Button>
