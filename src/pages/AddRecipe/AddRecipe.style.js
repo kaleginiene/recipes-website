@@ -12,6 +12,8 @@ export const Main = styled.main`
   background-size: cover;
   background-attachment: fixed;
   margin-bottom: -5.1em;
+  margin-top: -8em;
+  padding-top: 8em;
 `;
 
 export const Form = styled.form`
@@ -56,9 +58,22 @@ export const FlexBlock = styled.div`
     padding: 0.4em;
     margin: 0;
     margin-bottom: 0.5em;
+    @media only screen and (max-width: 691px) {
+      margin-bottom: 2em;
+    }
   }
   @media only screen and (max-width: 691px) {
     display: block;
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .mobile-flex {
+    margin: 0;
+    @media only screen and (max-width: 691px) {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2em;
+    }
   }
 `;
 
@@ -82,6 +97,7 @@ export const Duration = styled.div`
   }
   @media only screen and (max-width: 691px) {
     display: block;
+    padding: 0;
   }
 `;
 
@@ -93,6 +109,12 @@ export const Label = styled.label`
   padding-right: 0.2em;
   &:not(:first-child) {
     margin-left: 1.2em;
+    @media only screen and (max-width: 691px) {
+      margin-left: 0;
+    }
+  }
+  @media only screen and (max-width: 691px) {
+    padding: 0;
   }
 `;
 

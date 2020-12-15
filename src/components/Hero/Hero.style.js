@@ -32,6 +32,7 @@ export const Wrapper = styled.div`
     margin: 0 auto;
     margin-top: 1em;
     font-size: 1.2em;
+    border: 2px solid ${(props) => props.theme.primary.background};
     @media only screen and (max-width: 691px) {
       width: 100%;
       margin: 0;

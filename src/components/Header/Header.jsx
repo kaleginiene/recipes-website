@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./Header.style";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import logoImg from "../../assets/logo.png";
+import logoImg from "../../assets/logo.svg";
 import { Button } from "../../components";
 
 function Header() {
   const currentLocation = useLocation();
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const [mobileNav, setMobileNav] = useState("");
 
   return (
     <S.Header>
@@ -18,80 +19,20 @@ function Header() {
             <S.Logo src={logoImg} alt="Logo" />
           )}
         </Link>
+        {currentLocation.pathname !== "/" && <S.Title>Anyone can COOK</S.Title>}
+
         <S.Actions>
-          <S.StyledLink
-            to="/"
-            color={() => {
-              if (currentLocation.pathname === "/") {
-                return "#fff";
-              } else {
-                return "#154734";
-              }
-            }}
-          >
-            Home
-          </S.StyledLink>
-          <S.StyledLink
-            to="/about"
-            color={() => {
-              if (currentLocation.pathname === "/") {
-                return "#fff";
-              } else {
-                return "#154734";
-              }
-            }}
-          >
-            My recipes
-          </S.StyledLink>
-          <S.StyledLink
-            to="/add-recipe"
-            color={() => {
-              if (currentLocation.pathname === "/") {
-                return "#fff";
-              } else {
-                return "#154734";
-              }
-            }}
-          >
-            Add Recipe
-          </S.StyledLink>
+          <S.StyledLink to="/">Home</S.StyledLink>
+          <S.StyledLink to="/about">My recipes</S.StyledLink>
+          <S.StyledLink to="/add-recipe">Add Recipe</S.StyledLink>
           {!auth.token && (
             <>
-              <Button
-                color={() => {
-                  if (currentLocation.pathname === "/") {
-                    return "#fff";
-                  } else {
-                    return "#154734";
-                  }
-                }}
-                handleClick={() => history.push("/register")}
-              >
-                Register
-              </Button>
-              <Button
-                color={() => {
-                  if (currentLocation.pathname === "/") {
-                    return "#fff";
-                  } else {
-                    return "#154734";
-                  }
-                }}
-                handleClick={() => history.push("/login")}
-              >
-                Login
-              </Button>
+              <Button>Register</Button>
+              <Button handleClick={() => history.push("/login")}>Login</Button>
             </>
           )}
           {auth.token && (
             <Button
-              color={() => {
-                if (currentLocation.pathname === "/") {
-                  return "#fff";
-                } else {
-                  return "#154734";
-                }
-              }}
               handleClick={() =>
                 auth.updateToken(localStorage.removeItem("token"))
               }
@@ -100,6 +41,52 @@ function Header() {
             </Button>
           )}
         </S.Actions>
+        {/* mobile navigation */}
+
+        <S.Burger
+          onClick={() => {
+            if (mobileNav === "show") {
+              setMobileNav("hide");
+            } else {
+              setMobileNav("show");
+            }
+          }}
+        >
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+          <S.BurgerLine></S.BurgerLine>
+        </S.Burger>
+        {mobileNav === "show" && (
+          <S.MobileNav>
+            <S.ExitBtn onClick={() => setMobileNav("hide")} />
+            <S.Ul>
+              <S.ListItem>
+                <S.Icon className="home" />
+                <S.StyledLink to="/" onClick={() => setMobileNav("hide")}>
+                  Home
+                </S.StyledLink>
+              </S.ListItem>
+              <S.ListItem>
+                <S.Icon className="chef" />
+                <S.StyledLink
+                  to="/my-recipes"
+                  onClick={() => setMobileNav("hide")}
+                >
+                  My Recipes
+                </S.StyledLink>
+              </S.ListItem>
+              <S.ListItem>
+                <S.Icon className="add" />
+                <S.StyledLink
+                  to="/add-recipe"
+                  onClick={() => setMobileNav("hide")}
+                >
+                  Add recipe
+                </S.StyledLink>
+              </S.ListItem>
+            </S.Ul>
+          </S.MobileNav>
+        )}
       </S.Wrapper>
     </S.Header>
   );

@@ -17,27 +17,29 @@ function AddRecipe() {
             required
           />
           <S.FlexBlock>
-            <S.Label>Duration</S.Label>
-            <S.Duration>
-              <Inputfield
-                type="number"
-                step="1"
-                minNumber="0"
-                maxNumber="24"
-                placeholder="H"
-              />
-            </S.Duration>
-            <S.Span>:</S.Span>
-            <S.Duration>
-              <Inputfield
-                type="number"
-                step="1"
-                minNumber="0"
-                maxNumber="59"
-                placeholder="min"
-                required
-              />
-            </S.Duration>
+            <S.FlexBlock className="mobile-flex">
+              <S.Label>Duration</S.Label>
+              <S.Duration>
+                <Inputfield
+                  type="number"
+                  step="1"
+                  minNumber="0"
+                  maxNumber="24"
+                  placeholder="H"
+                />
+              </S.Duration>
+              <S.Span>:</S.Span>
+              <S.Duration>
+                <Inputfield
+                  type="number"
+                  step="1"
+                  minNumber="0"
+                  maxNumber="59"
+                  placeholder="min"
+                  required
+                />
+              </S.Duration>
+            </S.FlexBlock>
             <S.Label>Select type</S.Label>
             <Inputfield
               type="dropdown"
