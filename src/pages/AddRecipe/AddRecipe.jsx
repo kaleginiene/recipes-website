@@ -12,7 +12,15 @@ function insertRecipe(auth, recipe, history, setNotification) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${auth.token}`,
     },
-    body: JSON.stringify({ recipe }),
+    body: JSON.stringify({
+      title: recipe.title,
+      image: recipe.image,
+      duration: recipe.duration,
+      description: recipe.description,
+      type: recipe.type,
+      difficulty: recipe.difficulty,
+      ingredients: recipe.ingredients,
+    }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -48,7 +56,7 @@ function AddRecipe() {
 
   return (
     <S.Main>
-      <Section width="56">
+      <Section>
         <S.Form
           onSubmit={(e) => {
             e.preventDefault();
@@ -95,7 +103,7 @@ function AddRecipe() {
               <S.Duration>
                 <Inputfield
                   type="number"
-                  step="1"
+                  step="10"
                   minNumber="0"
                   maxNumber="59"
                   placeholder="min"
@@ -159,7 +167,7 @@ function AddRecipe() {
             placeholder="Type ingredients list here..."
             label="Ingredients"
             handleChange={(e) =>
-              setRecipe({ ...recipe, ingredients: e.target.value })
+              setRecipe({ ...recipe, ingredients: String(e.target.value) })
             }
           />
           <Inputfield
@@ -167,7 +175,7 @@ function AddRecipe() {
             placeholder="Type your recipe description here..."
             label="Description"
             handleChange={(e) =>
-              setRecipe({ ...recipe, description: e.target.value })
+              setRecipe({ ...recipe, description: String(e.target.value) })
             }
           />
 
