@@ -11,7 +11,7 @@ export const Section = styled.section`
 `;
 
 export const Container = styled.div`
-  max-width: 56em;
+  width: 56em;
   max-width: 100%;
   margin: 0 auto;
   width: ${(props) => (props.width ? props.width + "em" : "none")};

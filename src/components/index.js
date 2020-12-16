@@ -5,4 +5,5 @@ export { default as BreakLine } from "./BreakLine/BreakLine";
 export { default as Section } from "./Section/Section";
 export { default as Loader } from "./Loader/Loader";
 export { default as Inputfield } from "./InputField/InputField";
+export { default as RecipeCard } from "./RecipeCard/RecipeCard";
 export { default as Footer } from "./Footer/Footer";
