@@ -2,7 +2,8 @@ import styled from "styled-components";
 import BackgroundImg from "../../../assets/content/auth.jpg";
 
 export const Main = styled.main`
-  min-height: 87.5vh;
+  min-height: 95vh;
+  max-width: 100%;
   background-image: linear-gradient(
       90deg,
       rgba(74, 96, 82, 0.4) 17%,
@@ -12,6 +13,8 @@ export const Main = styled.main`
   background-size: cover;
   background-attachment: fixed;
   background-position-y: 20%;
+  padding-top: 8em;
+  margin-top: -8em;
   margin-bottom: -5.1em;
 `;
 
@@ -22,6 +25,7 @@ export const Form = styled.form`
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
   Label {
     color: ${(props) => props.theme.primary.fonts};
     font-size: 1em;
@@ -29,6 +33,7 @@ export const Form = styled.form`
   Input {
     padding: 1em;
     font-size: 1.2em;
+    max-width: 100%;
   }
   Button {
     font-size: 1.2em;
@@ -45,5 +50,9 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   text-align: center;
+  color: ${(props) => props.theme.primary.fonts};
+`;
+
+export const Subtitle = styled.h3`
   color: ${(props) => props.theme.primary.fonts};
 `;

@@ -41,7 +41,7 @@ function Login() {
         }}
       >
         <S.Title>Login</S.Title>
-        <h3>{notification && notification}</h3>
+        <S.Subtitle>{notification && notification}</S.Subtitle>
         <Inputfield
           type="text"
           placeholder="e.g. email@email.com"
