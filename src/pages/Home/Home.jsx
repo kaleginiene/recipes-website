@@ -1,39 +1,55 @@
-import React from "react";
-import { Hero, Button, Section } from "../../components";
+import React, { useEffect, useState, useContext } from "react";
+import { Hero, Section, RecipeCard } from "../../components";
+import { AuthContext } from "../../context/AuthContext";
 import * as S from "./Home.style";
 import Chef from "../../assets/logo.svg";
-import Food from "../../assets/content/food.jpg";
-import FoodBowl from "../../assets/content/bowl.jpg";
 
 function Home() {
+  const [recipes, setRecipes] = useState([]);
+  const [filterRecipes, setFilterRecipes] = useState([]);
+  const [myRecipes, setMyRecipes] = useState([]);
+  const auth = useContext(AuthContext);
+
+  console.log(recipes);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/recipes")
+      .then((res) => res.json())
+      .then((data) => setRecipes(data));
+  }, [setRecipes]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/my-recipes", {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setMyRecipes(data));
+  }, [auth.token]);
+
   return (
     <S.Main>
-      <Hero title="Anyone can COOK!" url={Chef} />
-      <Section fullWidth background="eee">
-        <S.FlexBlock>
-          <S.HalfContainer>
-            <S.Image src={Food} className="picture" />
-          </S.HalfContainer>
-          <S.HalfContainer>
-            <S.H2>
-              Home of simple, delicous recipes from all over the world
-            </S.H2>
-            <S.Article>
-              In this website, you can find various recipes. Also, you can
-              create your account and make your own recipes list or upload your
-              recipe! Various recipes from cuisines all over the world:
-              desserts, breakfast, dinner or supper ideas are more than welcome.
-            </S.Article>
-            <S.Article>And remember, Anyone can COOK!</S.Article>
-            <S.Image src={FoodBowl} />
-          </S.HalfContainer>
-        </S.FlexBlock>
-      </Section>
+      <Hero
+        title="Anyone can COOK!"
+        url={Chef}
+        allRecipes={recipes}
+        callback={(e) =>
+          setFilterRecipes(
+            recipes.filter((item) =>
+              item.title.toLowerCase().includes(e.target.value)
+            )
+          )
+        }
+      />
       <Section>
         <h2>Check the recipes</h2>
-      </Section>
-      <Section>
-        <Button color="primary">Check React Out</Button>
+
+        <RecipeCard
+          allRecipes={filterRecipes.length > 0 ? filterRecipes : recipes}
+          addOrRemove="add"
+          privateList={myRecipes}
+        />
       </Section>
     </S.Main>
   );

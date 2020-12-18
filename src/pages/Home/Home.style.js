@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-  min-height: 65vh;
+  min-height: 72vh;
 `;
 
 export const FlexBlock = styled.div`
@@ -9,6 +9,7 @@ export const FlexBlock = styled.div`
   max-width: 100%;
   margin: 0 auto;
   display: flex;
+  min-height: 80%;
   @media only screen and (max-width: 691px) {
     display: block;
   }

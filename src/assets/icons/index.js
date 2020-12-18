@@ -5,4 +5,7 @@ export { default as Home } from "./home.svg";
 export { default as Clock } from "./clock.svg";
 export { default as Meal } from "./meal.svg";
 export { default as Heart } from "./heart.svg";
+export { default as FullHeart } from "./full-heart.svg";
 export { default as MealNone } from "./no-meal.svg";
+export { default as Bin } from "./bin.svg";
+export { default as Search } from "./search.svg";
