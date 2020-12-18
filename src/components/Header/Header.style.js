@@ -67,6 +67,7 @@ export const Burger = styled.div`
     padding: 0.3em;
     border-radius: 0.5em;
     box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
     }
@@ -106,7 +107,8 @@ export const MobileNav = styled.div`
   width: 86%;
   padding: 1em;
   position: absolute;
-  right: 0;
+  right: 0.5em;
+  left: 0.5em;
   top: 6.4em;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);

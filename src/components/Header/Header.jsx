@@ -23,11 +23,13 @@ function Header() {
 
         <S.Actions>
           <S.StyledLink to="/">Home</S.StyledLink>
-          <S.StyledLink to="/about">My recipes</S.StyledLink>
+          <S.StyledLink to="/my-recipes">My recipes</S.StyledLink>
           <S.StyledLink to="/add-recipe">Add Recipe</S.StyledLink>
           {!auth.token && (
             <>
-              <Button>Register</Button>
+              <Button handleClick={() => history.push("/register")}>
+                Register
+              </Button>
               <Button handleClick={() => history.push("/login")}>Login</Button>
             </>
           )}
