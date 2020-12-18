@@ -10,10 +10,11 @@ export const Section = styled.section`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 56em;
   max-width: 100%;
   margin: 0 auto;
   width: ${(props) => (props.width ? props.width + "em" : "none")};
   background: #${(props) => props.background};
+  padding: 1.5em;
 `;
