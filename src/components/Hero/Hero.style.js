@@ -32,12 +32,17 @@ export const Wrapper = styled.div`
     margin: 0 auto;
     margin-top: 1em;
     font-size: 1.2em;
+    padding-left: 2.5em;
     border: 2px solid ${(props) => props.theme.primary.background};
     @media only screen and (max-width: 691px) {
       width: 100%;
       margin: 0;
     }
   }
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
 `;
 
 export const FlexBlock = styled.div`
@@ -62,5 +67,16 @@ export const Image = styled.img`
   max-height: 8em;
   @media only screen and (max-width: 691px) {
     max-height: 7.2em;
+  }
+`;
+
+export const Search = styled.img`
+  width: 2em;
+  position: absolute;
+  top: 1.6em;
+  left: 6em;
+  @media only screen and (max-width: 691px) {
+    top: 0.5em;
+    left: 0.5em;
   }
 `;
