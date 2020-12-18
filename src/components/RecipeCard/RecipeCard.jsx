@@ -1,8 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { RecipeContext } from "../../context/RecipeContext";
 import * as S from "./RecipeCard.style";
 import { MealNone } from "../../assets/icons";
 
-function RecipeCard({ allRecipes }) {
+const refreshPage = () => {
+  window.location.reload();
+};
+
+function RemoveFromList(auth, recipeID) {
+  fetch("http://localhost:8080/remove-my-recipe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
+    },
+    body: JSON.stringify({
+      recipeID: recipeID,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (
+        data.msg === "You have successfully removed a recipe from your list."
+      ) {
+        refreshPage();
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+function AddToList(auth, recipeID) {
+  fetch("http://localhost:8080/my-recipes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
+    },
+    body: JSON.stringify({
+      recipeID,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.msg === "You successfully added recipe to your list.") {
+        refreshPage();
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+function RecipeCard({ allRecipes, addOrRemove, privateList }) {
+  const auth = useContext(AuthContext);
+  const recipeID = useContext(RecipeContext);
+  const history = useHistory();
+
   return (
     <S.FlexBlock className="main">
       {allRecipes &&
@@ -12,12 +65,20 @@ function RecipeCard({ allRecipes }) {
               {item.image === "undefined" || !item.image || !new Image() ? (
                 <S.Image src={MealNone} className="none" />
               ) : (
-                <S.Image src={item.image} />
+                <S.Image
+                  src={item.image}
+                  onClick={() => {
+                    recipeID.setState(item.id);
+                    history.push("/recipe");
+                  }}
+                />
               )}
               <S.FlexBlock className="parent">
                 <S.FlexBlock className="icons">
                   <S.Icon className="duration" />
-                  <S.Subtitle>{item.duration}</S.Subtitle>
+                  <S.Subtitle>
+                    {item.duration.slice(0, item.duration.length - 3)}
+                  </S.Subtitle>
                 </S.FlexBlock>
                 <S.FlexBlock className="icons">
                   <S.Difficulty>
@@ -33,7 +94,53 @@ function RecipeCard({ allRecipes }) {
                 </S.FlexBlock>
               </S.FlexBlock>
               <S.Title>{item.title}</S.Title>
-              <S.Icon className="add" />
+              {auth.token ? (
+                <>
+                  {privateList.filter((listItem) => listItem.id === item.id)
+                    .length > 0 && addOrRemove !== "remove" ? (
+                    <S.Icon
+                      addOrRemove={addOrRemove}
+                      className="full"
+                      onClick={() => {
+                        RemoveFromList(auth, item.id);
+                      }}
+                    />
+                  ) : privateList.filter((listItem) => listItem.id === item.id)
+                      .length === 0 && addOrRemove === "add" ? (
+                    <S.Icon
+                      addOrRemove={addOrRemove}
+                      className="add"
+                      onClick={() => {
+                        AddToList(auth, item.id);
+                      }}
+                    />
+                  ) : (
+                    <S.Icon
+                      addOrRemove={addOrRemove}
+                      className="remove"
+                      onClick={() => {
+                        if (addOrRemove === "remove") {
+                          RemoveFromList(auth, item.id);
+                        } else if (addOrRemove === "add") {
+                          AddToList(auth, item.id);
+                        } else {
+                          console.log("Something went wrong");
+                        }
+                      }}
+                    />
+                  )}
+                </>
+              ) : (
+                <>
+                  <S.Icon
+                    addOrRemove={addOrRemove}
+                    className="add"
+                    onClick={() => {
+                      history.push("/login");
+                    }}
+                  />
+                </>
+              )}
             </S.Card>
           );
         })}

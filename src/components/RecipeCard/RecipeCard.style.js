@@ -1,26 +1,45 @@
 import styled from "styled-components";
-import { Meal, Clock, Heart } from "../../assets/icons";
+import { Meal, Clock, Heart, Bin, FullHeart } from "../../assets/icons";
 
 export const Card = styled.div`
   width: calc(33.33% - 1em);
+  max-width: 100%;
   margin: 0.5em;
   box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   position: relative;
   padding-bottom: 6em;
   height: 20em;
   text-align: center;
+  cursor: pointer;
   &:nth-child(3n) {
     margin-right: 0;
+    @media only screen and (max-width: 691px) {
+      margin-right: 0.5em;
+    }
   }
   &:nth-child(4) {
     margin-left: 0;
+    @media only screen and (max-width: 691px) {
+      margin-left: 0.5em;
+    }
   }
   &:nth-child(3n + 1) {
     margin-left: 0;
+    @media only screen and (max-width: 691px) {
+      margin-left: 0.5em;
+    }
   }
 
   &:first-child {
     margin-left: 0;
+    @media only screen and (max-width: 691px) {
+      margin-left: 0.5em;
+    }
+  }
+  @media only screen and (max-width: 691px) {
+    width: calc(100% - 1em);
+    margin: 0.5em;
   }
 `;
 
@@ -34,12 +53,11 @@ export const Image = styled.img`
   &&.none {
     width: 80%;
     padding: 1.8em 1.5em;
+    @media only screen and (max-width: 691px) {
+      padding: 1em;
+      width: 70%;
+    }
   }
-`;
-
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 export const Title = styled.h3`
@@ -63,6 +81,9 @@ export const FlexBlock = styled.div`
     width: 100%;
     flex-wrap: wrap;
     box-sizing: border-box;
+    @media only screen and (max-width: 691px) {
+      display: block;
+    }
   }
 `;
 
@@ -113,9 +134,6 @@ export const Icon = styled.div`
   height: 1.5em;
   border-radius: 0.2em;
   margin-right: 1em;
-  &:hover {
-    box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
-  }
   &&.duration {
     background-image: url(${Clock});
     margin: 0 auto;
@@ -128,6 +146,25 @@ export const Icon = styled.div`
     bottom: 1em;
     width: 2.3em;
     height: 2.2em;
+    cursor: pointer;
+  }
+  &&.full {
+    background-image: url(${FullHeart});
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    width: 2.3em;
+    height: 2.2em;
+    cursor: pointer;
+  }
+  &&.remove {
+    background-image: url(${Bin});
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    width: 2.3em;
+    height: 2.3em;
+    cursor: pointer;
   }
   &&.type {
     background-image: url(${Meal});
