@@ -2,7 +2,7 @@ import styled from "styled-components";
 import HerbsImg from "../../assets/content/herbs.jpg";
 
 export const Main = styled.main`
-  min-height: 65vh;
+  min-height: 72vh;
   background-image: linear-gradient(
       90deg,
       rgba(74, 96, 82, 0.4) 17%,

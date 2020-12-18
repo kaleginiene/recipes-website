@@ -5,6 +5,10 @@ import { Section, Inputfield } from "../../components";
 import { Button } from "../../components/Button/Button.style";
 import * as S from "./AddRecipe.style";
 
+function nl2br(str) {
+  return str.replace(/(?:\r\n|\r|\n)/g, "<br>");
+}
+
 function insertRecipe(auth, recipe, history, setNotification) {
   fetch("http://localhost:8080/recipes", {
     method: "POST",
@@ -16,14 +20,15 @@ function insertRecipe(auth, recipe, history, setNotification) {
       title: recipe.title,
       image: recipe.image,
       duration: recipe.duration,
-      description: recipe.description,
+      description: nl2br(recipe.description),
       type: recipe.type,
       difficulty: recipe.difficulty,
-      ingredients: recipe.ingredients,
+      ingredients: nl2br(recipe.ingredients),
     }),
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       if (data.msg === "You successfully added a recipe.") {
         history.push("/");
       } else {
@@ -103,7 +108,7 @@ function AddRecipe() {
               <S.Duration>
                 <Inputfield
                   type="number"
-                  step="10"
+                  step="5"
                   minNumber="0"
                   maxNumber="59"
                   placeholder="min"
