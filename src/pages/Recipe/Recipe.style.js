@@ -54,10 +54,18 @@ export const Image = styled.img`
   box-shadow: -4px 7px 15px 15px rgba(0, 0, 0, 0.3);
   width: calc(50% - 3em);
   object-fit: cover;
+  max-height: 20em;
 `;
 
 export const Article = styled.article`
   padding: 1em 0;
   text-align: justify;
   font-size: 1.2em;
+`;
+
+export const UL = styled.ul`
+  li {
+    list-style: none;
+    margin-bottom: 1em;
+  }
 `;

@@ -4,15 +4,22 @@ import { Section } from "../../components";
 import * as S from "./Recipe.style";
 
 function br2nl(str) {
-  if (str.includes("<br>")) {
+  if (str === null || str === undefined) {
+    return str;
+  } else if (str.includes("<br>")) {
     return str.replace(/<br>/g, "\n");
   } else {
     return str;
   }
 }
 function NewlineText(str) {
-  if (str.includes("\n")) {
-    const newText = str.split("\n").map((str) => <li>{str}</li>);
+  if (str === null || str === undefined) {
+    return str;
+  } else if (str.includes("\n") && str != null) {
+    const newText = str
+      .split("\n")
+      .filter((x) => x.length > 0)
+      .map((str) => <li>{str}</li>);
 
     return newText;
   } else {
@@ -50,20 +57,20 @@ function Recipe() {
                 : "There is no title"}
             </S.Title>
             <S.Subtitle>Ingredients</S.Subtitle>
-            <ul>
+            <S.UL>
               {recipe.length > 0
                 ? NewlineText(br2nl(recipe[0].ingredients))
                 : "Sorry, but there is no ingredients to show"}
-            </ul>
+            </S.UL>
           </S.Block>
         </S.FlexBlock>
         <S.Subtitle className="center">Directions</S.Subtitle>
         <S.Article>
-          <ol>
+          <S.UL>
             {recipe.length > 0
               ? NewlineText(br2nl(recipe[0].description))
               : "Sorry, but there is no description"}
-          </ol>
+          </S.UL>
         </S.Article>
       </Section>
     </S.Main>
