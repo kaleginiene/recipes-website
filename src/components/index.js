@@ -7,3 +7,4 @@ export { default as Loader } from "./Loader/Loader";
 export { default as Inputfield } from "./InputField/InputField";
 export { default as RecipeCard } from "./RecipeCard/RecipeCard";
 export { default as Footer } from "./Footer/Footer";
+export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
