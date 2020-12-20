@@ -4,6 +4,7 @@ import Routes from "./Routes";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { AuthProvider } from "./context/AuthContext";
 import { RecipeProvider } from "./context/RecipeContext";
+import { RegistrationProvider } from "./context/RegistrationContext";
 import theme from "./theme";
 import "normalize.css";
 
@@ -19,10 +20,12 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <RecipeProvider>
-          <GlobalBodyStyle />
-          <Routes />
-        </RecipeProvider>
+        <RegistrationProvider>
+          <RecipeProvider>
+            <GlobalBodyStyle />
+            <Routes />
+          </RecipeProvider>
+        </RegistrationProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

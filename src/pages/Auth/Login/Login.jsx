@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
+import { RegistrationContext } from "../../../context/RegistrationContext";
 import { Inputfield, Button } from "../../../components";
 import * as S from "./Login.style";
 
@@ -26,6 +27,7 @@ function loginUser(email, password, auth, history, setNotification) {
 
 function Login() {
   const auth = useContext(AuthContext);
+  const regNotification = useContext(RegistrationContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState();
@@ -41,6 +43,7 @@ function Login() {
         }}
       >
         <S.Title>Login</S.Title>
+        <S.Subtitle>{regNotification.state}</S.Subtitle>
         <S.Subtitle>{notification && notification}</S.Subtitle>
         <Inputfield
           type="text"

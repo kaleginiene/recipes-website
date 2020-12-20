@@ -55,4 +55,5 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.h3`
   color: ${(props) => props.theme.primary.fonts};
+  font-weight: normal;
 `;

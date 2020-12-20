@@ -1,10 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
+import { RegistrationContext } from "../../../context/RegistrationContext";
 import { Inputfield, Button } from "../../../components";
 import * as S from "./Register.style";
 
-function registerUser(email, password, auth, history, setNotification) {
+function registerUser(
+  email,
+  password,
+  history,
+  regNotification,
+  setNotification
+) {
   fetch("http://localhost:8080/register", {
     method: "POST",
     headers: {
@@ -14,9 +20,11 @@ function registerUser(email, password, auth, history, setNotification) {
   })
     .then((res) => res.json())
     .then((data) => {
-      auth.updateToken("Bearer " + data.token);
       if (data.msg === "User has been registered succsessfully.") {
-        history.push("/");
+        regNotification.setState(
+          "Your registration was successfull. Please enter your login details."
+        );
+        history.push("/login");
       } else {
         return setNotification(data.msg || "Error");
       }
@@ -25,7 +33,7 @@ function registerUser(email, password, auth, history, setNotification) {
 }
 
 function Register() {
-  const auth = useContext(AuthContext);
+  const regNotification = useContext(RegistrationContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState();
@@ -37,7 +45,13 @@ function Register() {
       <S.Form
         onSubmit={(e) => {
           e.preventDefault();
-          registerUser(email, password, auth, history, setNotification);
+          registerUser(
+            email,
+            password,
+            history,
+            regNotification,
+            setNotification
+          );
         }}
       >
         <S.Title>Register</S.Title>
