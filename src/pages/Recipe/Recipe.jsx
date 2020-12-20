@@ -30,7 +30,6 @@ function NewlineText(str) {
 function Recipe() {
   const recipeID = useContext(RecipeContext);
   const [recipe, setRecipe] = useState([]);
-  console.log(recipe);
 
   useEffect(() => {
     fetch(`http://localhost:8080/recipes/${recipeID.state}`)

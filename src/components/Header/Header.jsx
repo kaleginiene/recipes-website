@@ -10,7 +10,6 @@ function Header() {
   const history = useHistory();
   const auth = useContext(AuthContext);
   const [mobileNav, setMobileNav] = useState("");
-  console.log(currentLocation);
 
   return (
     <S.Header>

@@ -10,8 +10,6 @@ function Home() {
   const [myRecipes, setMyRecipes] = useState([]);
   const auth = useContext(AuthContext);
 
-  console.log(recipes);
-
   useEffect(() => {
     fetch("http://localhost:8080/recipes")
       .then((res) => res.json())
