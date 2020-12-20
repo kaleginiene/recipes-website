@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
     border: 2px solid ${(props) => props.theme.primary.background};
     @media only screen and (max-width: 691px) {
       width: 100%;
-      margin: 0;
+      margin: 1em 0 0 0;
     }
   }
 `;
@@ -76,7 +76,7 @@ export const Search = styled.img`
   top: 1.6em;
   left: 6em;
   @media only screen and (max-width: 691px) {
-    top: 0.5em;
+    top: 1.5em;
     left: 0.5em;
   }
 `;

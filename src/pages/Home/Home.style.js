@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   min-height: 72vh;
+  max-width: 100%none;
 `;
 
 export const FlexBlock = styled.div`
