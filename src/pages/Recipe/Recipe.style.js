@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Recipe from "../../assets/content/recipe.jpg";
 
 export const Main = styled.main`
-  min-height: 72vh;
+  min-height: 79vh;
   background-image: linear-gradient(
       90deg,
       rgba(74, 96, 82, 0.4) 17%,

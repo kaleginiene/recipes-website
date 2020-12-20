@@ -25,6 +25,9 @@ function MyRecipes() {
     <S.Main>
       <Section>
         <S.Title>My recipes list</S.Title>
+        <S.Subtitle>
+          {myRecipes.length === 0 && "Your recipes list is empty"}
+        </S.Subtitle>
         <RecipeCard
           allRecipes={myRecipes}
           addOrRemove="remove"

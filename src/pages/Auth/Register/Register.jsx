@@ -38,7 +38,6 @@ function Register() {
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState();
   const history = useHistory();
-  console.log(email, password);
 
   return (
     <S.Main>

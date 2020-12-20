@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Meal, Clock, Heart, Bin, FullHeart } from "../../assets/icons";
 
 export const Card = styled.div`
-  width: calc(33.33% - 1em);
+  width: calc(25% - 1em);
   max-width: 100%;
   margin: 0.5em;
   box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
@@ -11,35 +11,50 @@ export const Card = styled.div`
   padding-bottom: 6em;
   height: 20em;
   text-align: center;
-  cursor: pointer;
-  &:nth-child(3n) {
+  &:nth-child(4n) {
     margin-right: 0;
-    @media only screen and (max-width: 691px) {
+    @media only screen and (max-width: 768px) {
       margin-right: 0.5em;
     }
   }
-  &:nth-child(4) {
+  &:nth-child(5) {
     margin-left: 0;
-    @media only screen and (max-width: 691px) {
+    @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
   }
-  &:nth-child(3n + 1) {
+  &:nth-child(4n + 1) {
     margin-left: 0;
-    @media only screen and (max-width: 691px) {
+    @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
   }
 
   &:first-child {
     margin-left: 0;
-    @media only screen and (max-width: 691px) {
+    @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
   }
-  @media only screen and (max-width: 691px) {
+  @media only screen and (max-width: 480px) {
     width: calc(100% - 1em);
     margin: 1em 0.5em;
+  }
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    width: calc(33.33% - 1em);
+    max-width: 100%;
+
+    &:nth-child(3n) {
+      margin-right: 0.5;
+    }
+
+    &:nth-child(3n + 1) {
+      margin-left: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `;
 
@@ -93,8 +108,8 @@ export const Subtitle = styled.p`
 `;
 
 export const Difficulty = styled.div`
-  width: 1.5em;
-  max-height: 1.5em;
+  width: 2em;
+  height: 2em;
   margin-right: 0.5em;
   border-radius: 100%;
   margin: 0 auto;
@@ -105,9 +120,9 @@ export const Difficulty = styled.div`
 `;
 
 export const Level = styled.div`
-  width: 0.4em;
-  height: 0.4em;
-  margin: 0.1em;
+  width: 0.5em;
+  height: 0.5em;
+  margin: 0.08em;
   border-radius: 100%;
   border: 1px solid ${(props) => props.theme.primary.background};
   &:nth-child(1) {
@@ -130,8 +145,8 @@ export const Icon = styled.div`
   background-size: cover;
   padding: 0.2em;
   box-sizing: border-box;
-  width: 1.5em;
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   border-radius: 0.2em;
   margin-right: 1em;
   &&.duration {

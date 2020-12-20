@@ -57,8 +57,6 @@ function AddRecipe() {
   const history = useHistory();
   const [notification, setNotification] = useState();
 
-  console.log(recipe);
-
   return (
     <S.Main>
       <Section>
@@ -81,7 +79,7 @@ function AddRecipe() {
               setRecipe({ ...recipe, title: e.target.value })
             }
           />
-          <S.FlexBlock>
+          <S.FlexBlock className="parent">
             <S.FlexBlock className="mobile-flex">
               <S.Label>Duration</S.Label>
               <S.Duration>
@@ -127,36 +125,44 @@ function AddRecipe() {
                 />
               </S.Duration>
             </S.FlexBlock>
-            <S.Label>Select type</S.Label>
-            <Inputfield
-              type="dropdown"
-              options={[
-                { id: 0, name: "Select type" },
-                { id: 1, name: "breakfast", value: "breakfast" },
-                { id: 2, name: "lunch", value: "lunch" },
-                { id: 3, name: "dinner", value: "dinner" },
-                { id: 4, name: "supper", value: "supper" },
-                { id: 5, name: "dessert", value: "dessert" },
-                { id: 6, name: "apetizer", value: "apetizer" },
-                { id: 7, name: "soup", value: "soup" },
-              ]}
-              handleChange={(e) =>
-                setRecipe({ ...recipe, type: e.target.value })
-              }
-            />
-            <S.Label>Difficulty</S.Label>
-            <Inputfield
-              type="dropdown"
-              options={[
-                { id: 0, name: "Select difficulty" },
-                { id: 1, name: "easy", value: "easy" },
-                { id: 2, name: "need some effort", value: "need some effort" },
-                { id: 3, name: "expert", value: "expert" },
-              ]}
-              handleChange={(e) =>
-                setRecipe({ ...recipe, difficulty: e.target.value })
-              }
-            />
+            <S.FlexBlock>
+              <S.Label>Select type</S.Label>
+              <Inputfield
+                type="dropdown"
+                options={[
+                  { id: 0, name: "Select type" },
+                  { id: 1, name: "breakfast", value: "breakfast" },
+                  { id: 2, name: "lunch", value: "lunch" },
+                  { id: 3, name: "dinner", value: "dinner" },
+                  { id: 4, name: "supper", value: "supper" },
+                  { id: 5, name: "dessert", value: "dessert" },
+                  { id: 6, name: "apetizer", value: "apetizer" },
+                  { id: 7, name: "soup", value: "soup" },
+                ]}
+                handleChange={(e) =>
+                  setRecipe({ ...recipe, type: e.target.value })
+                }
+              />
+            </S.FlexBlock>
+            <S.FlexBlock>
+              <S.Label>Difficulty</S.Label>
+              <Inputfield
+                type="dropdown"
+                options={[
+                  { id: 0, name: "Select difficulty" },
+                  { id: 1, name: "easy", value: "easy" },
+                  {
+                    id: 2,
+                    name: "need some effort",
+                    value: "need some effort",
+                  },
+                  { id: 3, name: "expert", value: "expert" },
+                ]}
+                handleChange={(e) =>
+                  setRecipe({ ...recipe, difficulty: e.target.value })
+                }
+              />
+            </S.FlexBlock>
           </S.FlexBlock>
           <Inputfield
             type="text"

@@ -21,7 +21,7 @@ export const Hero = styled.section`
 `;
 
 export const Wrapper = styled.div`
-  width: 56em;
+  width: 75em;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -74,7 +74,7 @@ export const Search = styled.img`
   width: 2em;
   position: absolute;
   top: 1.6em;
-  left: 6em;
+  left: 8em;
   @media only screen and (max-width: 691px) {
     top: 1.5em;
     left: 0.5em;

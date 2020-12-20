@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ListBack from "../../assets/content/list.jpg";
 
 export const Main = styled.main`
-  min-height: 90vh;
+  min-height: 79vh;
   background-image: linear-gradient(
       90deg,
       rgba(74, 96, 82, 0.4) 17%,
@@ -17,6 +17,10 @@ export const Main = styled.main`
 `;
 
 export const Title = styled.h1`
+  text-align: center;
+  color: ${(props) => props.theme.primary.fonts};
+`;
+export const Subtitle = styled.h2`
   text-align: center;
   color: ${(props) => props.theme.primary.fonts};
 `;

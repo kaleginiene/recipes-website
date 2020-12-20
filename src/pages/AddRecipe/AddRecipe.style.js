@@ -2,7 +2,7 @@ import styled from "styled-components";
 import HerbsImg from "../../assets/content/herbs.jpg";
 
 export const Main = styled.main`
-  min-height: 72vh;
+  min-height: 79vh;
   background-image: linear-gradient(
       90deg,
       rgba(74, 96, 82, 0.4) 17%,
@@ -52,7 +52,6 @@ export const FlexBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2em;
   max-width: 100%;
   Select {
     padding: 0.4em;
@@ -74,6 +73,9 @@ export const FlexBlock = styled.div`
       align-items: center;
       margin-bottom: 2em;
     }
+  }
+  &&.parent {
+    margin-bottom: 2em;
   }
 `;
 
@@ -107,12 +109,7 @@ export const Label = styled.label`
   font-weight: bold;
   margin: 0;
   padding-right: 0.2em;
-  &:not(:first-child) {
-    margin-left: 1.2em;
-    @media only screen and (max-width: 691px) {
-      margin-left: 0;
-    }
-  }
+
   @media only screen and (max-width: 691px) {
     padding: 0;
   }

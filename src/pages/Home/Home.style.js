@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-  min-height: 72vh;
-  max-width: 100%none;
+  min-height: 97vh;
+  max-width: 100%;
 `;
 
 export const FlexBlock = styled.div`

@@ -7,7 +7,7 @@ export const Header = styled.header`
   background: transparent;
 `;
 export const Wrapper = styled.div`
-  width: 56em;
+  width: 75em;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
@@ -35,7 +35,7 @@ export const Actions = styled.nav`
     background-color: #fff;
     color: #1b261f;
   }
-  @media only screen and (max-width: 691px) {
+  @media only screen and (max-width: 768px) {
     display: none;
   }
 `;
@@ -50,9 +50,11 @@ export const StyledLink = styled(Link)`
   &:not(:last-child) {
     margin-right: 1em;
   }
-  @media only screen and (max-width: 691px) {
-    color: ${(props) => props.theme.secondary.fonts};
-    font-weight: bold;
+  &&.mobile {
+    @media only screen and (max-width: 768px) {
+      color: ${(props) => props.theme.secondary.fonts};
+      font-weight: bold;
+    }
   }
 `;
 
@@ -104,18 +106,34 @@ export const BurgerLine = styled.div`
 `;
 
 export const MobileNav = styled.div`
-  width: 86%;
-  padding: 1em;
-  position: absolute;
-  right: 0.5em;
-  left: 0.5em;
-  top: 6.4em;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 5px 0 0em 5px;
-  transition: ease-in 0.3s;
-  border: 3px solid ${(props) => props.theme.primary.background};
-  z-index: 99;
+  display: none;
+  @media only screen and (max-width: 768px) {
+    display: block;
+    max-width: 95%;
+    box-sizing: border-box;
+    padding: 1em;
+    position: absolute;
+    right: 1em;
+    left: 1em;
+    top: 6.4em;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px 0 0em 5px;
+    transition: ease-in 0.3s;
+    border: 3px solid ${(props) => props.theme.primary.background};
+    z-index: 99;
+    Button {
+      background: ${(props) => props.theme.primary.background};
+      color: ${(props) => props.theme.primary.fonts};
+    }
+    Button:not(:last-child) {
+      margin-right: 1em;
+    }
+    Button:hover {
+      background-color: #fff;
+      color: #1b261f;
+    }
+  }
 `;
 export const ExitBtn = styled.div`
   background-image: url(${Exit});

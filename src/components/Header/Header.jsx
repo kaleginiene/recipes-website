@@ -10,6 +10,7 @@ function Header() {
   const history = useHistory();
   const auth = useContext(AuthContext);
   const [mobileNav, setMobileNav] = useState("");
+  console.log(currentLocation);
 
   return (
     <S.Header>
@@ -35,9 +36,10 @@ function Header() {
           )}
           {auth.token && (
             <Button
-              handleClick={() =>
-                auth.updateToken(localStorage.removeItem("token"))
-              }
+              handleClick={() => {
+                auth.updateToken(localStorage.removeItem("token"));
+                history.push("/");
+              }}
             >
               Logout
             </Button>
@@ -64,7 +66,11 @@ function Header() {
             <S.Ul>
               <S.ListItem>
                 <S.Icon className="home" />
-                <S.StyledLink to="/" onClick={() => setMobileNav("hide")}>
+                <S.StyledLink
+                  to="/"
+                  onClick={() => setMobileNav("hide")}
+                  className="mobile"
+                >
                   Home
                 </S.StyledLink>
               </S.ListItem>
@@ -73,6 +79,7 @@ function Header() {
                 <S.StyledLink
                   to="/my-recipes"
                   onClick={() => setMobileNav("hide")}
+                  className="mobile"
                 >
                   My Recipes
                 </S.StyledLink>
@@ -82,10 +89,31 @@ function Header() {
                 <S.StyledLink
                   to="/add-recipe"
                   onClick={() => setMobileNav("hide")}
+                  className="mobile"
                 >
                   Add recipe
                 </S.StyledLink>
               </S.ListItem>
+              {!auth.token && (
+                <S.ListItem>
+                  <Button handleClick={() => history.push("/register")}>
+                    Register
+                  </Button>
+                  <Button handleClick={() => history.push("/login")}>
+                    Login
+                  </Button>
+                </S.ListItem>
+              )}
+              {auth.token && (
+                <Button
+                  handleClick={() => {
+                    auth.updateToken(localStorage.removeItem("token"));
+                    history.push("/");
+                  }}
+                >
+                  Logout
+                </Button>
+              )}
             </S.Ul>
           </S.MobileNav>
         )}

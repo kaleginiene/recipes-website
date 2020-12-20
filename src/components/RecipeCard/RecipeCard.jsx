@@ -9,6 +9,10 @@ const refreshPage = () => {
   window.location.reload();
 };
 
+function firstUppChar(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 function RemoveFromList(auth, recipeID) {
   fetch("http://localhost:8080/remove-my-recipe", {
     method: "POST",
@@ -97,7 +101,7 @@ function RecipeCard({ allRecipes, addOrRemove, privateList }) {
                   <S.Subtitle>{item.type}</S.Subtitle>
                 </S.FlexBlock>
               </S.FlexBlock>
-              <S.Title>{item.title}</S.Title>
+              <S.Title>{firstUppChar(item.title)}</S.Title>
               {auth.token ? (
                 <>
                   {privateList.filter((listItem) => listItem.id === item.id)
