@@ -39,7 +39,7 @@ export const Card = styled.div`
   }
   @media only screen and (max-width: 691px) {
     width: calc(100% - 1em);
-    margin: 0.5em;
+    margin: 1em 0.5em;
   }
 `;
 

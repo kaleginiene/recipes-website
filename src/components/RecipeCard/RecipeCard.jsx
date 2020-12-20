@@ -62,16 +62,20 @@ function RecipeCard({ allRecipes, addOrRemove, privateList }) {
         allRecipes.map((item) => {
           return (
             <S.Card key={item.id}>
-              {item.image === "undefined" || !item.image || !new Image() ? (
+              {item.image === "undefined" ||
+              !item.image ||
+              !item.image.includes("http") ? (
                 <S.Image src={MealNone} className="none" />
               ) : (
-                <S.Image
-                  src={item.image}
-                  onClick={() => {
-                    recipeID.setState(item.id);
-                    history.push("/recipe");
-                  }}
-                />
+                item.image.includes("http") && (
+                  <S.Image
+                    src={item.image}
+                    onClick={() => {
+                      recipeID.setState(item.id);
+                      history.push("/recipe");
+                    }}
+                  />
+                )
               )}
               <S.FlexBlock className="parent">
                 <S.FlexBlock className="icons">
