@@ -10,7 +10,9 @@ function nl2br(str) {
 }
 
 function insertRecipe(auth, recipe, history, setNotification) {
-  fetch("http://localhost:8080/recipes", {
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+  fetch(`${url}/recipes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

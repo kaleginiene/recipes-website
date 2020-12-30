@@ -19,7 +19,7 @@ function NewlineText(str) {
     const newText = str
       .split("\n")
       .filter((x) => x.length > 0)
-      .map((str) => <li>{str}</li>);
+      .map((str, index) => <li key={index}>{str}</li>);
 
     return newText;
   } else {
@@ -30,12 +30,14 @@ function NewlineText(str) {
 function Recipe() {
   const recipeID = useContext(RecipeContext);
   const [recipe, setRecipe] = useState([]);
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   useEffect(() => {
-    fetch(`http://localhost:8080/recipes/${recipeID.state}`)
+    fetch(`${url}/recipes/${recipeID.state}`)
       .then((res) => res.json())
       .then((data) => setRecipe(data));
-  }, [recipeID]);
+  }, [url, recipeID]);
 
   return (
     <S.Main>

@@ -65,6 +65,7 @@ export const Image = styled.img`
   object-position: center;
   box-sizing: border-box;
   margin-bottom: 0.5em;
+  cursor: pointer;
   &&.none {
     width: 80%;
     padding: 1.8em 1.5em;

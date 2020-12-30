@@ -6,7 +6,9 @@ import { Inputfield, Button } from "../../../components";
 import * as S from "./Login.style";
 
 function loginUser(email, password, auth, history, setNotification) {
-  fetch("http://localhost:8080/login", {
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+  fetch(`${url}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

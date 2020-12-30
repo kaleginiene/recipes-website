@@ -11,7 +11,9 @@ function registerUser(
   regNotification,
   setNotification
 ) {
-  fetch("http://localhost:8080/register", {
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+  fetch(`${url}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

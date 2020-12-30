@@ -14,7 +14,9 @@ function firstUppChar(string) {
 }
 
 function RemoveFromList(auth, recipeID) {
-  fetch("http://localhost:8080/remove-my-recipe", {
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+  fetch(`${url}/remove-my-recipe`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +38,9 @@ function RemoveFromList(auth, recipeID) {
 }
 
 function AddToList(auth, recipeID) {
-  fetch("http://localhost:8080/my-recipes", {
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+  fetch(`${url}/my-recipes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

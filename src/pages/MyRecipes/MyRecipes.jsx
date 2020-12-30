@@ -9,17 +9,20 @@ function MyRecipes() {
   const uniqueRecipes = myRecipes.filter((item, index) => {
     return myRecipes.indexOf(item) !== index;
   });
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+
   console.log(uniqueRecipes);
 
   useEffect(() => {
-    fetch("http://localhost:8080/my-recipes", {
+    fetch(`${url}/my-recipes`, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
     })
       .then((res) => res.json())
       .then((data) => setMyRecipes(data));
-  }, [auth.token]);
+  }, [url, auth.token]);
 
   return (
     <S.Main>
