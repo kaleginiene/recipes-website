@@ -44,7 +44,7 @@ function Home() {
         }
       />
       <Section>
-        <h2>Check the recipes</h2>
+        <S.H2>Check the recipes</S.H2>
 
         <RecipeCard
           allRecipes={filterRecipes.length > 0 ? filterRecipes : recipes}

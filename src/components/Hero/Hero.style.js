@@ -39,6 +39,9 @@ export const Wrapper = styled.div`
       margin: 1em 0 0 0;
     }
   }
+  input::placeholder {
+    color: #444;
+  }
 `;
 
 export const InputWrapper = styled.div`

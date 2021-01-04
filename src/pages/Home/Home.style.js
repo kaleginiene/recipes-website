@@ -43,6 +43,9 @@ export const Image = styled.img`
 
 export const H2 = styled.h2`
   margin-top: 0;
+  @media only screen and (max-width: 691px) {
+    text-align: center;
+  }
 `;
 
 export const Article = styled.article`
