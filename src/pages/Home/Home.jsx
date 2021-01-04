@@ -20,7 +20,7 @@ function Home() {
   }, [url, setRecipes]);
 
   useEffect(() => {
-    fetch(url + "/my-recipes", {
+    fetch(`${url}/my-recipes`, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },

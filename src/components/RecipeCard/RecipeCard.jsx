@@ -16,6 +16,7 @@ function firstUppChar(string) {
 function RemoveFromList(auth, recipeID) {
   const url =
     process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+
   fetch(`${url}/remove-my-recipe`, {
     method: "POST",
     headers: {
@@ -40,6 +41,7 @@ function RemoveFromList(auth, recipeID) {
 function AddToList(auth, recipeID) {
   const url =
     process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
+
   fetch(`${url}/my-recipes`, {
     method: "POST",
     headers: {
@@ -133,8 +135,6 @@ function RecipeCard({ allRecipes, addOrRemove, privateList }) {
                       onClick={() => {
                         if (addOrRemove === "remove") {
                           RemoveFromList(auth, item.id);
-                        } else if (addOrRemove === "add") {
-                          AddToList(auth, item.id);
                         } else {
                           console.log("Something went wrong");
                         }
