@@ -6,6 +6,7 @@ export const Header = styled.header`
   padding: 1.5em 1.5em 0 1.5em;
   background: transparent;
 `;
+
 export const Wrapper = styled.div`
   width: 75em;
   max-width: 100%;
@@ -28,13 +29,16 @@ export const Actions = styled.nav`
     border: 1px solid ${(props) => props.theme.primary.fonts};
     color: ${(props) => props.theme.primary.fonts};
   }
+
   Button:not(:last-child) {
     margin-right: 1em;
   }
+
   Button:hover {
     background-color: #fff;
     color: #1b261f;
   }
+
   @media only screen and (max-width: 768px) {
     display: none;
   }
@@ -44,12 +48,15 @@ export const StyledLink = styled(Link)`
   font-size: 1.2em;
   color: ${(props) => props.theme.primary.fonts};
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }
+
   &:not(:last-child) {
     margin-right: 1em;
   }
+
   &&.mobile {
     @media only screen and (max-width: 768px) {
       color: ${(props) => props.theme.secondary.fonts};
@@ -62,6 +69,7 @@ export const StyledLink = styled(Link)`
 
 export const Burger = styled.div`
   display: none;
+
   @media only screen and (max-width: 768px) {
     display: block;
     width: 3em;
@@ -77,6 +85,7 @@ export const Burger = styled.div`
 `;
 export const Title = styled.h2`
   display: none;
+
   @media only screen and (max-width: 768px) {
     display: block;
     color: ${(props) => props.theme.primary.fonts};
@@ -89,6 +98,7 @@ export const Title = styled.h2`
 
 export const SubTitle = styled.h2`
   display: none;
+
   @media only screen and (max-width: 768px) {
     display: block;
     color: #443d3d;
@@ -100,6 +110,7 @@ export const BurgerLine = styled.div`
   padding: 0.2em;
   background-color: ${(props) => props.theme.primary.fonts};
   border-radius: 2em;
+
   &:not(:last-child) {
     margin-bottom: 0.5em;
   }
@@ -107,6 +118,7 @@ export const BurgerLine = styled.div`
 
 export const MobileNav = styled.div`
   display: none;
+
   @media only screen and (max-width: 768px) {
     display: block;
     max-width: 95%;
@@ -122,24 +134,29 @@ export const MobileNav = styled.div`
     transition: ease-in 0.3s;
     border: 3px solid ${(props) => props.theme.primary.background};
     z-index: 99;
+
     Button {
       background: ${(props) => props.theme.primary.background};
       color: ${(props) => props.theme.primary.fonts};
     }
+
     Button:not(:last-child) {
       margin-right: 1em;
     }
+
     Button:hover {
       background-color: #fff;
       color: #1b261f;
     }
   }
 `;
+
 export const ExitBtn = styled.div`
   background-image: url(${Exit});
   width: 2em;
   height: 2em;
   border-radius: 2em;
+
   &:hover {
     box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
   }
@@ -163,15 +180,19 @@ export const Icon = styled.div`
   height: 2em;
   border-radius: 2em;
   margin-right: 0.8em;
+
   &:hover {
     box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
   }
+
   &&.home {
     background-image: url(${Home});
   }
+
   &&.add {
     background-image: url(${Add});
   }
+
   &&.chef {
     background-image: url(${Chef});
   }

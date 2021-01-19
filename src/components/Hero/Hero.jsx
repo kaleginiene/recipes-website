@@ -3,7 +3,7 @@ import { Inputfield } from "../../components";
 import * as S from "./Hero.style";
 import { Search } from "../../assets/icons";
 
-function Hero({ title, url, callback }) {
+function Hero({ title, url, callback, callbackButton }) {
   return (
     <S.Hero>
       <S.Wrapper>
@@ -16,7 +16,7 @@ function Hero({ title, url, callback }) {
           <Inputfield
             type="text"
             placeholder="Find your recipe..."
-            handleChange={callback}
+            handleKeyUp={callback}
           />
         </S.InputWrapper>
       </S.Wrapper>

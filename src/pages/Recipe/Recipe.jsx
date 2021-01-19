@@ -12,6 +12,7 @@ function br2nl(str) {
     return str;
   }
 }
+
 function NewlineText(str) {
   if (str === null || str === undefined) {
     return str;

@@ -23,19 +23,22 @@ export const Form = styled.form`
   text-align: right;
   margin-bottom: 6em;
   max-width: 100%;
-  Button {
+  d Button {
     background-color: ${(props) => props.theme.primary.background};
     color: ${(props) => props.theme.primary.fonts};
   }
+
   Button:hover {
     border: 1px solid ${(props) => props.theme.secondary.fonts};
   }
+
   textarea {
     min-height: 10em;
     border: 2px solid ${(props) => props.theme.primary.background};
     background-color: rgba(21, 71, 52, 0.1);
     margin-bottom: 2em;
   }
+
   Input,
   Select {
     border: 2px solid ${(props) => props.theme.primary.background};
@@ -53,6 +56,7 @@ export const FlexBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   max-width: 100%;
+
   Select {
     padding: 0.4em;
     margin: 0;
@@ -74,6 +78,7 @@ export const FlexBlock = styled.div`
       margin-bottom: 2em;
     }
   }
+
   &&.parent {
     margin-bottom: 2em;
   }

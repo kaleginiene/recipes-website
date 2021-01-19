@@ -42,6 +42,13 @@ function Home() {
             )
           )
         }
+        callbackButton={(e) =>
+          setFilterRecipes(
+            recipes.filter((item) =>
+              item.title.toLowerCase().includes(e.target.value)
+            )
+          )
+        }
       />
       <Section>
         <S.H2>Check the recipes</S.H2>

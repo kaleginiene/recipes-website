@@ -95,10 +95,20 @@ function Header() {
               </S.ListItem>
               {!auth.token && (
                 <S.ListItem>
-                  <Button handleClick={() => history.push("/register")}>
+                  <Button
+                    handleClick={() => {
+                      setMobileNav("hide");
+                      history.push("/register");
+                    }}
+                  >
                     Register
                   </Button>
-                  <Button handleClick={() => history.push("/login")}>
+                  <Button
+                    handleClick={() => {
+                      setMobileNav("hide");
+                      history.push("/login");
+                    }}
+                  >
                     Login
                   </Button>
                 </S.ListItem>
@@ -106,6 +116,7 @@ function Header() {
               {auth.token && (
                 <Button
                   handleClick={() => {
+                    setMobileNav("hide");
                     auth.updateToken(localStorage.removeItem("token"));
                     history.push("/");
                   }}

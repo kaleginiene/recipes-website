@@ -5,6 +5,7 @@ function InputField({
   type,
   placeholder,
   handleChange,
+  handleKeyUp,
   options,
   radioId,
   label,
@@ -136,6 +137,7 @@ function InputField({
             width={width}
             maxLength={maxLength}
             disabled={disabled}
+            onKeyUp={handleKeyUp}
           />
         </S.InputWrapper>
       );

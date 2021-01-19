@@ -14,7 +14,7 @@ export const Main = styled.main`
   background-attachment: fixed;
   background-position-y: 20%;
   padding-top: 8em;
-  margin-top: -8em;
+  margin-top: -9em;
   margin-bottom: -5.1em;
 `;
 
@@ -26,15 +26,18 @@ export const Form = styled.form`
   margin: 0 auto;
   text-align: center;
   box-sizing: border-box;
+
   Label {
     color: ${(props) => props.theme.primary.fonts};
     font-size: 1em;
   }
+
   Input {
     padding: 1em;
     font-size: 1.2em;
     max-width: 100%;
   }
+
   Button {
     font-size: 1.2em;
     background: ${(props) => props.theme.primary.button.background};
@@ -42,6 +45,7 @@ export const Form = styled.form`
     color: ${(props) => props.theme.primary.fonts};
     margin: 1.5em 0;
   }
+
   Button:hover {
     background: ${(props) => props.theme.primary.fonts};
     color: ${(props) => props.theme.secondary.fonts};

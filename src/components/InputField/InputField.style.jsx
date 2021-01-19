@@ -15,6 +15,7 @@ export const Input = styled.input`
   height: ${(props) => props.theme.primary.height};
   margin: 0.2em 0 1em;
   font-size: 1.2em;
+
   &:focus {
     outline: none;
   }
@@ -29,6 +30,7 @@ export const TextArea = styled.textarea`
   border: 2px solid #b3c5d6;
   border-radius: 5px;
   font-size: 1.2em;
+
   &&:focus {
     outline: none;
   }
@@ -47,10 +49,12 @@ export const Select = styled.select`
   border-radius: 5px;
   padding: 0.685em;
   margin: 0.2em 0 1em;
+
   @media only screen and (max-width: 691px) {
     max-width: 100%;
   }
 `;
+
 export const Radio = styled.input`
   width: 15px;
   margin-right: 10px;

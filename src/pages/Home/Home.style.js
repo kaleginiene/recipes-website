@@ -11,6 +11,7 @@ export const FlexBlock = styled.div`
   margin: 0 auto;
   display: flex;
   min-height: 80%;
+
   @media only screen and (max-width: 691px) {
     display: block;
   }
@@ -20,12 +21,15 @@ export const HalfContainer = styled.div`
   width: calc(50% - 1.5em);
   box-sizing: border-box;
   padding: 4em 0 1.5em;
+
   &:first-child {
     margin-right: 5em;
+
     @media only screen and (max-width: 691px) {
       margin-right: 0;
     }
   }
+
   @media only screen and (max-width: 691px) {
     width: 100%;
     padding-top: 1em;
@@ -34,6 +38,7 @@ export const HalfContainer = styled.div`
 
 export const Image = styled.img`
   width: 100%;
+
   &.picture {
     @media only screen and (max-width: 691px) {
       display: none;
@@ -43,6 +48,7 @@ export const Image = styled.img`
 
 export const H2 = styled.h2`
   margin-top: 0;
+
   @media only screen and (max-width: 691px) {
     text-align: center;
   }

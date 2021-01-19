@@ -5,6 +5,7 @@ export const Section = styled.section`
   padding: 1.5em;
   box-sizing: border-box;
   max-width: 100%;
+
   @media only screen and (max-width: 768px) {
     padding: 1em;
   }
@@ -18,6 +19,7 @@ export const Container = styled.section`
   background: #${(props) => props.background};
   box-sizing: border-box;
   padding: 1.5em 0;
+
   @media only screen and (max-width: 768px) {
     padding: 1em;
     max-width: 100%;

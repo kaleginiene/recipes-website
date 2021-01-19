@@ -18,6 +18,10 @@ export const Hero = styled.section`
   color: #fff;
   margin-top: -8em;
   width: 100%;
+
+  @media only screen and (max-width: 691px) {
+    min-height: 22em;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -26,6 +30,10 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   text-align: center;
   padding: 1em;
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
   input {
     background-color: rgba(255, 255, 255, 0.6);
     width: 80%;
@@ -34,18 +42,15 @@ export const Wrapper = styled.div`
     font-size: 1.2em;
     padding-left: 2.5em;
     border: 2px solid ${(props) => props.theme.primary.background};
+
     @media only screen and (max-width: 691px) {
-      width: 100%;
-      margin: 1em 0 0 0;
+      display: none;
     }
   }
+
   input::placeholder {
     color: #444;
   }
-`;
-
-export const InputWrapper = styled.div`
-  position: relative;
 `;
 
 export const FlexBlock = styled.div`
@@ -58,9 +63,11 @@ export const FlexBlock = styled.div`
 export const Title = styled.h1`
   font-size: 3em;
   text-align: center;
+
   @media only screen and (max-width: 691px) {
     font-size: 2em;
   }
+
   @media only screen and (max-width: 320px) {
     font-size: 1.5em;
   }
@@ -68,18 +75,19 @@ export const Title = styled.h1`
 
 export const Image = styled.img`
   max-height: 8em;
+
   @media only screen and (max-width: 691px) {
     max-height: 7.2em;
   }
 `;
 
 export const Search = styled.img`
-  width: 2em;
+  width: 2.3em;
   position: absolute;
-  top: 1.6em;
-  left: 8em;
+  top: 1.5em;
+  left: 10.5%;
+
   @media only screen and (max-width: 691px) {
-    top: 1.5em;
-    left: 0.5em;
+    display: none;
   }
 `;

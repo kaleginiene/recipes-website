@@ -11,20 +11,24 @@ export const Card = styled.div`
   padding-bottom: 6em;
   height: 20em;
   text-align: center;
+
   &:nth-child(4n) {
     margin-right: 0;
     @media only screen and (max-width: 768px) {
       margin-right: 0.5em;
     }
   }
+
   &:nth-child(5) {
     margin-left: 0;
     @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
   }
+
   &:nth-child(4n + 1) {
     margin-left: 0;
+
     @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
@@ -32,14 +36,17 @@ export const Card = styled.div`
 
   &:first-child {
     margin-left: 0;
+
     @media only screen and (max-width: 768px) {
       margin-left: 0.5em;
     }
   }
+
   @media only screen and (max-width: 480px) {
     width: calc(100% - 1em);
     margin: 1em 0.5em;
   }
+
   @media only screen and (min-width: 481px) and (max-width: 768px) {
     width: calc(33.33% - 1em);
     max-width: 100%;
@@ -66,9 +73,11 @@ export const Image = styled.img`
   box-sizing: border-box;
   margin-bottom: 0.5em;
   cursor: pointer;
+
   &&.none {
     width: 80%;
     padding: 1.8em 1.5em;
+
     @media only screen and (max-width: 691px) {
       padding: 1em;
       width: 70%;
@@ -84,19 +93,23 @@ export const Title = styled.h3`
 export const FlexBlock = styled.div`
   display: flex;
   align-items: center;
+
   &&.parent {
     justify-content: space-around;
     padding: 0 1em;
   }
+
   &&.icons {
     flex-direction: column;
     justify-content: center;
     width: 33.33%;
   }
+
   &&.main {
     width: 100%;
     flex-wrap: wrap;
     box-sizing: border-box;
+
     @media only screen and (max-width: 691px) {
       display: block;
     }
@@ -150,6 +163,7 @@ export const Icon = styled.div`
   height: 2em;
   border-radius: 0.2em;
   margin-right: 1em;
+
   &&.duration {
     background-image: url(${Clock});
     margin: 0 auto;
@@ -164,6 +178,7 @@ export const Icon = styled.div`
     height: 2.2em;
     cursor: pointer;
   }
+
   &&.full {
     background-image: url(${FullHeart});
     position: absolute;
@@ -173,6 +188,7 @@ export const Icon = styled.div`
     height: 2.2em;
     cursor: pointer;
   }
+
   &&.remove {
     background-image: url(${Bin});
     position: absolute;
@@ -182,6 +198,7 @@ export const Icon = styled.div`
     height: 2.3em;
     cursor: pointer;
   }
+
   &&.type {
     background-image: url(${Meal});
     margin: 0 auto;

@@ -14,28 +14,34 @@ export const Main = styled.main`
   margin-bottom: -5em;
   margin-top: -8em;
   padding: 8em 0;
+
   Section {
     background: rgba(255, 255, 255, 0.8);
   }
+
   @media only screen and (max-width: 768px) {
     padding: 8em 1em;
   }
 `;
+
 export const FlexBlock = styled.div`
-  width: 56em;
-  max-width: 100%;
   margin: 0 auto;
-  display: flex;
+  padding: 1em 1.5em;
+  max-width: 100%;
   min-height: 80%;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+
   @media only screen and (max-width: 691px) {
     display: block;
   }
 `;
 
 export const Block = styled.div`
-  width: 50%;
+  width: 60%;
   max-width: 100%;
+
   @media only screen and (max-width: 691px) {
     width: 100%;
   }
@@ -43,30 +49,34 @@ export const Block = styled.div`
 
 export const Title = styled.h1`
   color: ${(props) => props.theme.secondary.fonts};
-  margin-top: 0.5em;
+  margin-top: 0;
+
   @media only screen and (max-width: 691px) {
     text-align: center;
   }
 `;
+
 export const Subtitle = styled.h2`
   color: ${(props) => props.theme.secondary.fonts};
-  margin-top: 1em;
+  margin-top: 0.5em;
+
   &&.center {
     text-align: center;
   }
+
   @media only screen and (max-width: 691px) {
     text-align: center;
   }
 `;
 
 export const Image = styled.img`
-  float: left;
-  margin: 1em;
-  margin-right: 2em;
-  box-shadow: -4px 7px 15px 15px rgba(0, 0, 0, 0.3);
-  width: calc(50% - 3em);
-  object-fit: cover;
+  margin: 0 2em 0.5em 0.5em;
+  width: calc(40% - 3em);
   max-height: 20em;
+  float: left;
+  box-shadow: -4px 7px 15px 15px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+
   @media only screen and (max-width: 691px) {
     width: 100%;
     margin: 0;
@@ -75,9 +85,17 @@ export const Image = styled.img`
 `;
 
 export const Article = styled.article`
-  padding: 1em 0;
-  text-align: justify;
+  padding: 0 1.5em;
   font-size: 1.2em;
+
+  ul {
+    display: block;
+    li {
+      width: 100%;
+      text-align: justify;
+    }
+  }
+
   @media only screen and (max-width: 691px) {
     font-size: 1em;
   }
@@ -85,10 +103,15 @@ export const Article = styled.article`
 
 export const UL = styled.ul`
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
   li {
+    width: 50%;
     list-style: none;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
+
   @media only screen and (max-width: 691px) {
     text-align: center;
   }

@@ -15,6 +15,7 @@ export const Button = styled.button`
   padding: 0.8em 2em;
   min-width: 8em;
   cursor: pointer;
+
   &:hover {
     background: ${(props) =>
       props.color === "primary"
@@ -26,6 +27,7 @@ export const Button = styled.button`
         : props.theme.secondary.hover.fonts};
     box-shadow: -4px 7px 15px 1px rgba(0, 0, 0, 0.2);
   }
+
   &:focus {
     background: ${(props) =>
       props.color === "primary"

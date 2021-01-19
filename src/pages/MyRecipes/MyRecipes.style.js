@@ -20,6 +20,7 @@ export const Title = styled.h1`
   text-align: center;
   color: ${(props) => props.theme.primary.fonts};
 `;
+
 export const Subtitle = styled.h2`
   text-align: center;
   color: ${(props) => props.theme.primary.fonts};
