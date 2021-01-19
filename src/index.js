@@ -5,6 +5,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { AuthProvider } from "./context/AuthContext";
 import { RecipeProvider } from "./context/RecipeContext";
 import { RegistrationProvider } from "./context/RegistrationContext";
+import { MyRecipesListProvider } from "./context/MyRecipesListContext";
 import theme from "./theme";
 import "normalize.css";
 
@@ -22,8 +23,10 @@ ReactDOM.render(
       <AuthProvider>
         <RegistrationProvider>
           <RecipeProvider>
-            <GlobalBodyStyle />
-            <Routes />
+            <MyRecipesListProvider>
+              <GlobalBodyStyle />
+              <Routes />
+            </MyRecipesListProvider>
           </RecipeProvider>
         </RegistrationProvider>
       </AuthProvider>

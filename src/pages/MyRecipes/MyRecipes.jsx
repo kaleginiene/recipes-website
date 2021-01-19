@@ -6,13 +6,8 @@ import * as S from "./MyRecipes.style";
 function MyRecipes() {
   const [myRecipes, setMyRecipes] = useState([]);
   const auth = useContext(AuthContext);
-  const uniqueRecipes = myRecipes.filter((item, index) => {
-    return myRecipes.indexOf(item) !== index;
-  });
   const url =
     process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
-
-  console.log(uniqueRecipes);
 
   useEffect(() => {
     fetch(`${url}/my-recipes`, {
